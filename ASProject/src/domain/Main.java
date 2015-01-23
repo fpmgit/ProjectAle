@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.Session;
+
 import presentation.PresentationController;
 
 
@@ -10,7 +12,9 @@ public class Main {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				// First all: create users
+				
+				Session session = InitSessionFactory.getSessionFactory().getCurrentSession();
+				//First all: create users NEW
 				RegisteredUserController userCtrl = DataFactoriaController.getInstance().getUserController();
 				userCtrl.createRegisteredUsers();
 				LevelController levelCtrl = DataFactoriaController.getInstance().getLevelController();
